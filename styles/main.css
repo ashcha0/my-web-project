@@ -1,0 +1,407 @@
+/* CSS 变量定义 */
+:root {
+    /* 浅色主题变量 */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+    --text-color: #333;
+    --bg-color: #f4f4f4;
+    --card-bg: #ffffff;
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --header-text: #ffffff;
+    --border-color: #ddd;
+}
+
+/* 深色主题变量 */
+[data-theme="dark"] {
+    --primary-color: #2980b9;
+    --secondary-color: #27ae60;
+    --dark-color: #f4f4f4;
+    --light-color: #333;
+    --text-color: #f4f4f4;
+    --bg-color: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    --header-text: #ffffff;
+    --border-color: #444;
+}
+
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 添加动画关键帧 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 更新头部样式 */
+header {
+    background-color: var(--primary-color);
+    color: var(--header-text);
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    animation: slideIn 0.8s ease-out;
+}
+
+header h1 {
+    margin: 0;
+    animation: fadeIn 1s ease-out;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+    position: relative;
+}
+
+/* 导航链接动画 */
+nav ul li a {
+    color: var(--header-text);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--header-text);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* 主体内容样式 */
+main {
+    padding: 20px;
+}
+
+.intro {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 1s ease-out;
+    cursor: pointer;
+}
+
+.intro:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* 页脚样式 */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+    animation: slideIn 1.5s ease-out;
+}
+
+/* 添加响应式设计 */
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        animation: fadeIn 0.5s ease-out;
+        animation-fill-mode: both;
+    }
+
+    nav ul li:nth-child(1) { animation-delay: 0.1s; }
+    nav ul li:nth-child(2) { animation-delay: 0.2s; }
+    nav ul li:nth-child(3) { animation-delay: 0.3s; }
+
+    .intro {
+        padding: 15px;
+    }
+}
+
+/* 添加网格系统 */
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 2rem 0;
+}
+
+/* 添加操作按钮容器样式 */
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 添加列表样式 */
+.card ul {
+    padding-left: 1.2rem;
+    margin: 1rem 0;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.card ul li::before {
+    content: '→';
+    position: absolute;
+    left: -1.2rem;
+    color: var(--primary-color);
+}
+
+/* 添加卡片组件样式 */
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 添加按钮样式 */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: all 0.5s ease;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* 主题切换按钮样式 */
+.theme-switch {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--header-text);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    border: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.theme-switch:hover {
+    animation: none;
+    transform: scale(1.1) rotate(180deg);
+}
+
+/* 添加加载动画类 */
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* 添加淡入动画类 */
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+/* 添加滑入动画类 */
+.slide-in {
+    animation: slideIn 0.8s ease-out;
+}
+
+/* 响应式动画调整 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 时间线样式 */
+.timeline {
+    padding: 20px 0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.timeline-item .date {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 联系信息样式 */
+.contact-info {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-info .icon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 0;
+    }
+
+    .timeline-item {
+        padding-left: 20px;
+    }
+}

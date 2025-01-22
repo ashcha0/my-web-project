@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 我的网页项目</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/utilities.css">
+</head>
+
+<body>
+    <header>
+        <h1>联系我们</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="project-details.html">项目</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro fade-in">
+            <h2>联系方式</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>在线联系</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送消息</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>联系信息</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="icon">📧</i>
+                            <span>邮箱：contact@example.com</span>
+                        </li>
+                        <li>
+                            <i class="icon">📱</i>
+                            <span>电话：+86 123 4567 8900</span>
+                        </li>
+                        <li>
+                            <i class="icon">📍</i>
+                            <span>地址：中国上海市某某区某某街道</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 我的公司</p>
+    </footer>
+
+    <button class="theme-switch" id="themeSwitch" title="切换主题">
+        🌓
+    </button>
+
+    <script src="../scripts/app.js"></script>
+</body>
+
+</html> 
